@@ -9,6 +9,18 @@ class actonpy():
             print('Could not connect to serial port')
 
     def query(self, cmd):
+        """ Queries the Spectrometer
+
+        send spectrometer commands (with added carriage return) as
+        documented in spectrometers manual and returns answer
+        Args:
+            cmd: Command to send
+        Returns:
+            Answer from spectrometer as a string stripped from newlines
+            and spectrometer 'ok'
+        Raises:
+            no error handling yet
+        """
         self.ser.write(cmd+'\r')
         ret = self.ser.readall()
         return ret[1:-6]
