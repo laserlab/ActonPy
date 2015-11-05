@@ -2,8 +2,8 @@ import serial
 class actonpy():
     def __init__(self, port='COM3'):
         self.ser = serial.Serial(port, 9600, timeout=1)
-        if self.ser.isOpen(self):
-            ret = query('MODEL')
+        if self.ser.isOpen():
+            ret = self.query('MODEL')
             print('Spectrometer {} connected'.format(ret))
         else:
             print('Could not connect to serial port')
